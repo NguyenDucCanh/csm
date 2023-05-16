@@ -24,9 +24,21 @@ int icp_loop(struct sm_params*params, const double*q0, double*x_new,
 	unsigned int hashes[params->max_iterations];
 	int iteration;
 
-	int min_corresp_bef = min(floor(0.05 * laser_sens->nrays), 30); /* TODO: arbitrary */
-	int min_corresp_aft = min(floor(0.05 * laser_sens->nrays), 20); /* TODO: arbitrary */
+	int min_corresp_bef ;//= min(floor(0.05 * laser_sens->nrays), 30); /* TODO: arbitrary */
+	int min_corresp_aft ;//= min(floor(0.05 * laser_sens->nrays), 20); /* TODO: arbitrary */
 
+	if (!params->customiser) // The value is not assigned
+	{
+		// Set it as default value:
+		min_corresp_bef = min(floor(0.05 * laser_sens->nrays), 30); // Use as default for laser_scan_matcher
+		min_corresp_aft = min(floor(0.05 * laser_sens->nrays), 20); // Use as default for laser_scan_matcher
+	}
+	else
+	{
+		min_corresp_bef = params->min_corresp_bef;
+		min_corresp_aft = params->min_corresp_aft;
+	}
+	
 	sm_debug("icp: starting at  q0 =  %s  \n", friendly_pose(x_old));
 
 	if(JJ) jj_loop_enter("iterations");
