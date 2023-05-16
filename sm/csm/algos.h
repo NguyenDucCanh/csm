@@ -8,6 +8,7 @@
 #include "hsm/hsm_interface.h"
 #include "laser_data.h"
 #include <string.h>
+#include <stdbool.h> 
 
 struct sm_params {
 	/** First scan ("ref"erence scan) */
