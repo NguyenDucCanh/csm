@@ -5,6 +5,7 @@
 #include <stdio.h>
 
 #include "restrict.h"
+#include <stdbool.h> 
 
 struct correspondence;
 
