@@ -133,7 +133,7 @@ struct sm_params {
 	/* Parameter specific to HSM (unfinished :-/ ) */
 	struct hsm_params hsm;
 	
-	char *custom;
+	bool customiser;
 	int min_corresp_bef;
 	int min_corresp_aft;
 };
